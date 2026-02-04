@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class cameraManager : MonoBehaviour
 {
-    public Transform target;
-
-    public Vector3 offset;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    [SerializeField] Transform target;
+    [SerializeField] Vector3 offset;
 
     // Update is called once per frame
     void FixedUpdate()

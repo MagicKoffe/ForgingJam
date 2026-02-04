@@ -2,14 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float acceleration;
+    [SerializeField] TextMeshProUGUI velocityText;
     [SerializeField] float turningSpeed;
     [SerializeField] float sailSpeed;
     [SerializeField] float rowSpeed;
 
+    [SerializeField] GameObject sailModel;
     public bool sailsUp;
     float rotationInput;
     float movementInput;
@@ -44,6 +47,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         getInput();
+        updateUI();
+    }
+
+    private void updateUI()
+    {
+        var playerVelocityToText = "Velocity= " + _rigidbody.velocity.magnitude;
+        velocityText.text = playerVelocityToText;
     }
 
     private void getInput()
@@ -61,8 +71,14 @@ public class PlayerMovement : MonoBehaviour
     private void toggleSails()
     {
         if (sailsUp)
+        {
             sailsUp = false;
+            sailModel.SetActive(false);
+        }
         else
+        {
             sailsUp = true;
+            sailModel.SetActive(true);
+        }
     }
 }
