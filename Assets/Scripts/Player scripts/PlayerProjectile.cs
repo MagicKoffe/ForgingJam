@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    float damage = 5;
+    float damage = 0;
 
     public void setDamage(float _damage)
     {
@@ -15,7 +15,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         if(collision.transform.tag == "Enemy")
         {
-            //Progam dmg to enemy
+            collision.transform.GetComponent<EnemyHealth>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

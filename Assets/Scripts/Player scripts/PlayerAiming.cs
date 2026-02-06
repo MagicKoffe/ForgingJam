@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerAiming : MonoBehaviour
 {
+    //This script handles the position of the reticle
+
     Transform worldReticle;
     Vector3 worldMousePosition;
 
@@ -17,7 +19,7 @@ public class PlayerAiming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        positionReticle();
+        positionReticle();      
     }
 
     private void positionReticle()
@@ -32,4 +34,6 @@ public class PlayerAiming : MonoBehaviour
 
         worldReticle.position = new Vector3(worldMousePosition.x, 1.5f, worldMousePosition.z);
     }
+
+    
 }

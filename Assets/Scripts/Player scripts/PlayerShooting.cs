@@ -8,6 +8,7 @@ public class PlayerShooting : MonoBehaviour
     Transform playerReticle;
     Vector3 aimDirection;
 
+    public WeaponTemplate currentWeapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,16 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         getAimDirection();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            shootWeapon();
+        }
+    }
+
+    private void shootWeapon()
+    {
+        currentWeapon.shoot(transform, aimDirection, playerReticle);
     }
 
     //Calculate aim direction by subtracting reticel position - player position

@@ -10,13 +10,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentHealth = maxHealth;
     }
 
     public void takeDamage(float damage)
@@ -33,5 +27,7 @@ public class EnemyHealth : MonoBehaviour
     {
         //Play sinking animation
         //Drop gold for player to collect
+
+        Destroy(gameObject);
     }
 }

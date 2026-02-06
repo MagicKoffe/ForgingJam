@@ -6,8 +6,10 @@ using UnityEngine;
 public class WeaponScriptableObject : ScriptableObject
 {
     public string weaponName;
+    public float damage;
     public float coolDown;
     public float projectileSpeed;
+    public bool arced;
     public Sprite icon;
     public GameObject projectile;
     
@@ -15,10 +17,13 @@ public class WeaponScriptableObject : ScriptableObject
     //Projectile will hit first enemy it comes into contact with
     public void starightShoot(Transform shootingOrigin, Vector3 shootingDirection)
     {
-        GameObject _projectile = Instantiate(projectile, shootingOrigin.position, Quaternion.identity);
-        Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
+        Vector3 originPosition = new Vector3(shootingOrigin.position.x, 1.5f, shootingOrigin.position.z);
 
-        projectileRB.AddForce(projectileSpeed * shootingDirection, ForceMode.Acceleration);
+        GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
+        Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
+        _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
+
+        projectileRB.AddForce(projectileSpeed * shootingDirection * 10, ForceMode.Acceleration);
     }
 
     //Shoots projectile in an arc to mouse position
