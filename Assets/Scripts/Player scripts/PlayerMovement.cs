@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI velocityText;
+    //[SerializeField] TextMeshProUGUI velocityText;
     [SerializeField] float turningSpeed;
     [SerializeField] float sailSpeed;
     [SerializeField] float rowSpeed;
@@ -47,13 +47,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         getInput();
-        updateUI();
+        //updateUI();
     }
 
     private void updateUI()
     {
         var playerVelocityToText = "Velocity= " + _rigidbody.velocity.magnitude;
-        velocityText.text = playerVelocityToText;
+        //velocityText.text = playerVelocityToText;
     }
 
     private void getInput()
