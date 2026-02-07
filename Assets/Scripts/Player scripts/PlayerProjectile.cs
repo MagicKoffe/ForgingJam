@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    float damage = 0;
+    float damage;
 
     //Varibale used for arc calculations
     bool isArcing;
@@ -29,10 +29,10 @@ public class PlayerProjectile : MonoBehaviour
         {
             collision.transform.GetComponent<EnemyHealth>().takeDamage(damage);
         }
-
         Destroy(gameObject);
     }
 
+    //--------------------------------------------------ALL BELOW IS FOR ARCING PROJECTILES--------------------------------------------------
     public void arcTowardsTarget(Vector3 _origin, Vector3 _targetPoint, float _projectileSpeed)
     {
         isArcing = true;
@@ -42,14 +42,6 @@ public class PlayerProjectile : MonoBehaviour
         currentPosition = transform.position;
 
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(origin, 1F);
-        Gizmos.DrawSphere(targetPoint, 1F);
-    }
-
 
     private void Update()
     {

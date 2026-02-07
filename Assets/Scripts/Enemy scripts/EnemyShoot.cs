@@ -15,6 +15,7 @@ public class EnemyShoot : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        InvokeRepeating("shootTarget", 5f, 5f);
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class EnemyShoot : MonoBehaviour
 
         GameObject _projectile = Instantiate(enemyProjectile, originPosition, Quaternion.identity);
         Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
-        _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
+        _projectile.GetComponent<EnemyProjectile>().setDamage(damage);
 
         projectileRB.AddForce(projectileSpeed * aimDirection * 10, ForceMode.Acceleration);
     }

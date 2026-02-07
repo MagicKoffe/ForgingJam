@@ -32,6 +32,7 @@ public class WeaponScriptableObject : ScriptableObject
     {
         Vector3 originPosition = new Vector3(shootingOrigin.position.x, 1.5f, shootingOrigin.position.z);
         GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
+        _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
         _projectile.GetComponent<PlayerProjectile>().arcTowardsTarget(originPosition, targetPoint.position, projectileSpeed);
     }
 

@@ -9,7 +9,7 @@ public class WeaponTemplate : MonoBehaviour
     public Image iconLocation;
     public Image iconCooldown;
 
-    float weaponCooldown; //The cooldonw of the wepaon
+    float weaponCooldown; //The cooldonw of the weapon
     float cooldownTimer;  //Timer used to keep track of the cooldown coutdown
 
     private void Start()

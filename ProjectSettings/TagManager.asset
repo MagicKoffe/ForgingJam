@@ -17,8 +17,8 @@ TagManager:
   - Mouse
   - Player
   - PlayerProjectile
-  - 
-  - 
+  - EnemyProjectile
+  - Enemy
   - 
   - 
   - 

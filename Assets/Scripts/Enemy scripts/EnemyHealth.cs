@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 10;
-    float currentHealth;
+    public float currentHealth;
 
     void Start()
     {
@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void takeDamage(float damage)
     {
+        Debug.Log("Take damage: " + damage);
         currentHealth -= damage;
 
         if(currentHealth <= 0)
