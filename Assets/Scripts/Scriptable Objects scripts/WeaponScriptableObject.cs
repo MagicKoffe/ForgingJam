@@ -30,7 +30,9 @@ public class WeaponScriptableObject : ScriptableObject
     //Projectile only damages at that location
     public void arcShoot(Transform shootingOrigin, Transform targetPoint)
     {
-        GameObject _projectile = Instantiate(projectile, shootingOrigin.position, Quaternion.identity);
+        Vector3 originPosition = new Vector3(shootingOrigin.position.x, 1.5f, shootingOrigin.position.z);
+        GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
+        _projectile.GetComponent<PlayerProjectile>().arcTowardsTarget(originPosition, targetPoint.position, projectileSpeed);
     }
 
 }

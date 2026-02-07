@@ -35,6 +35,7 @@ public class PlayerShooting : MonoBehaviour
     private void getAimDirection()
     {
         aimDirection = (playerReticle.position - transform.position).normalized;
+        aimDirection.y = 0;
         Debug.DrawLine(transform.position, aimDirection * 300);
     }
 }
