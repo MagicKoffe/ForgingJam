@@ -9,6 +9,7 @@ public class WeaponScriptableObject : ScriptableObject
     public float damage;
     public float coolDown;
     public float projectileSpeed;
+    public float projectileLifeTime;
     public bool arced;
     public Sprite icon;
     public GameObject projectile;
@@ -22,7 +23,7 @@ public class WeaponScriptableObject : ScriptableObject
         GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
 
         Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
-        _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
+        _projectile.GetComponent<PlayerProjectile>().setStats(damage, projectileLifeTime);
 
         projectileRB.AddForce(projectileSpeed * shootingDirection * 10, ForceMode.Acceleration);
     }
@@ -33,7 +34,7 @@ public class WeaponScriptableObject : ScriptableObject
     {
         Vector3 originPosition = new Vector3(shootingOrigin.position.x, 1.5f, shootingOrigin.position.z);
         GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
-        _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
+        _projectile.GetComponent<PlayerProjectile>().setStats(damage, projectileLifeTime);
         _projectile.GetComponent<PlayerProjectile>().arcTowardsTarget(originPosition, targetPoint.position, projectileSpeed);
     }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     float damage;
+    float lifeTime;
 
     //Varibale used for arc calculations
     bool isArcing;
@@ -18,9 +19,18 @@ public class PlayerProjectile : MonoBehaviour
     float arcFactor = 0.5f;
     //
 
-    public void setDamage(float _damage)
+    public void setStats(float _damage, float _lifeTime)
     {
         damage = _damage;
+        lifeTime = _lifeTime;
+
+        StartCoroutine(startLifetime());
+    }
+
+    private IEnumerator startLifetime()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

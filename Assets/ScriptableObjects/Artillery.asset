@@ -16,6 +16,7 @@ MonoBehaviour:
   damage: 15
   coolDown: 10
   projectileSpeed: 5
+  projectileLifeTime: 100
   arced: 1
   icon: {fileID: 21300000, guid: fc646eb16e1274f4b95075000e94dad5, type: 3}
   projectile: {fileID: 5221594576346642138, guid: ee82001274fb8724caee98af2a426123, type: 3}
