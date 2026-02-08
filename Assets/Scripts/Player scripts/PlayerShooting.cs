@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
 {
     Transform playerReticle;
     Vector3 aimDirection;
+    public WeaponTemplate[] weaponArray;
 
     public WeaponTemplate currentWeapon;
     // Start is called before the first frame update
@@ -23,6 +24,21 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             shootWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentWeapon = weaponArray[0];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentWeapon = weaponArray[1];
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentWeapon = weaponArray[2];
         }
     }
 

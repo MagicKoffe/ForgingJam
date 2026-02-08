@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class moneyBag : MonoBehaviour
 {
-    public int moneyValue = 10;
+    public int moneyValueMin = 10;
+    public int moneyValueMax = 20;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,9 @@ public class moneyBag : MonoBehaviour
     //When player runs into this object, add its value to the money counter and destroy it
     private void collectMoneyBag(PlayerMoneyManager pmm)
     {
-        pmm.changeMoney(moneyValue);
+        int value = UnityEngine.Random.Range(moneyValueMin,moneyValueMax + 1);
+
+        pmm.changeMoney(value);
         Destroy(gameObject);
     }
 }

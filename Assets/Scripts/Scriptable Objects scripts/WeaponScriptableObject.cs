@@ -12,7 +12,7 @@ public class WeaponScriptableObject : ScriptableObject
     public bool arced;
     public Sprite icon;
     public GameObject projectile;
-    
+
     //This method shoots a projectile in a straight line
     //Projectile will hit first enemy it comes into contact with
     public void starightShoot(Transform shootingOrigin, Vector3 shootingDirection)
@@ -20,6 +20,7 @@ public class WeaponScriptableObject : ScriptableObject
         Vector3 originPosition = new Vector3(shootingOrigin.position.x, 1.5f, shootingOrigin.position.z);
 
         GameObject _projectile = Instantiate(projectile, originPosition, Quaternion.identity);
+
         Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
         _projectile.GetComponent<PlayerProjectile>().setDamage(damage);
 
