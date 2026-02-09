@@ -30,6 +30,16 @@ public class TurretTemplate : MonoBehaviour
         calculateTargets();
         getAimDirection();
     }
+    
+    public void takeDmg(float dmg)
+    {
+        currentHealth -= dmg;
+
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void calculateTargets()
     {

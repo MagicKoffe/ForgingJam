@@ -13,6 +13,16 @@ public class EnemyProjectile : MonoBehaviour
             collision.transform.GetComponent<PlayerHealth>().changeHealth(-damage);
         }
 
+        if (collision.transform.tag == "Turret")
+        {
+            collision.transform.GetComponent<TurretTemplate>().takeDmg(damage);
+        }
+
+        if (collision.transform.tag == "IslandBase")
+        {
+            collision.transform.GetComponent<baseScript>().TakeDmg(damage);
+        }
+
         Destroy(gameObject);
     }
 

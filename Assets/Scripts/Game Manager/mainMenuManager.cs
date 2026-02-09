@@ -5,20 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class mainMenuManager : MonoBehaviour
 {
-    public GameObject menuManager;
+    public GameObject tutorialPage1;
+    public GameObject tutorialPage2;
+    public GameObject tutorialPage3;
     bool optionsHidden;
 
     private void Start()
     {
-        optionsHidden = true;
+        tutorialPage1.SetActive(false);
+        tutorialPage2.SetActive(false);
+        tutorialPage3.SetActive(false);
     }
 
-    public void toggleOptions()
+
+    public void page1()
     {
-        if (optionsHidden)
-            optionsHidden = false;
-        else
-            optionsHidden = true;
+        tutorialPage1.SetActive(true);
+        tutorialPage2.SetActive(false);
+        tutorialPage3.SetActive(false);
+    }
+
+    public void page2()
+    {
+        tutorialPage1.SetActive(false);
+        tutorialPage2.SetActive(true);
+        tutorialPage3.SetActive(false);
+    }
+
+    public void page3()
+    {
+        tutorialPage1.SetActive(false);
+        tutorialPage2.SetActive(false);
+        tutorialPage3.SetActive(true);
+    }
+
+    public void closeTut()
+    {
+        tutorialPage1.SetActive(false);
+        tutorialPage2.SetActive(false);
+        tutorialPage3.SetActive(false);
     }
 
     public void startGame()
@@ -26,8 +51,5 @@ public class mainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    private void Update()
-    {
-        menuManager.SetActive(!optionsHidden);
-    }
+ 
 }

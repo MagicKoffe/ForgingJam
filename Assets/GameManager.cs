@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverScreen;
     public TextMeshProUGUI timerUI;
+    int islandCount;
     float elapsedTime;
     bool gameIsOver;
 
@@ -57,6 +58,16 @@ public class GameManager : MonoBehaviour
         timerUI.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    internal void islandDestroyed()
+    {
+        islandCount--;
+
+        if(islandCount == 0)
+        {
+            gameOver();
+        }
+    }
+
     private void spawnEnemy()
     {
         int spwnLocation = UnityEngine.Random.Range(0, spawns.Length);
@@ -66,6 +77,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        islandCount = 3;
         spawnRate = 7f;
         gameOverScreen.SetActive(false);
         gameIsOver = false;

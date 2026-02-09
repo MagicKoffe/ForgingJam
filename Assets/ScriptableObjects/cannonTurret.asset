@@ -15,9 +15,9 @@ MonoBehaviour:
   buildingName: Cannon turret
   damage: 5
   health: 15
-  range: 15
+  range: 10
   cost: 50
-  fireRate: 2
+  fireRate: 5
   projectileSpeed: 2
   projectileLifeTime: 100
   tracking: 1

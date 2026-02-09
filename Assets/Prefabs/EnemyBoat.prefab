@@ -378,9 +378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a73165fa357be543bfc5d67ef128ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTarget: {fileID: 0}
   enemyProjectile: {fileID: 6228057405834262707, guid: 8b969e7249f947546a1e1b1ba5cdca2a, type: 3}
   projectileSpeed: 50
   damage: 5
+  range: 15
 --- !u!195 &1343638662590921029
 NavMeshAgent:
   m_ObjectHideFlags: 0
