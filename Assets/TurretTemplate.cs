@@ -66,6 +66,9 @@ public class TurretTemplate : MonoBehaviour
 
     public void shootTarget()
     {
+        if (currentTarget == null)
+            return;
+
         if(closestDistance <= range)
         {
             if (turretStats.tracking)
@@ -77,7 +80,7 @@ public class TurretTemplate : MonoBehaviour
             else
             {
 
-                GameObject _projectile = Instantiate(turretStats.projectile, transform.position, Quaternion.identity);
+                GameObject _projectile = Instantiate(turretStats.projectile, shootingPoint.position, Quaternion.identity);
 
                 Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
                 _projectile.GetComponent<turretProjectile>().setStats(turretStats.damage, turretStats.projectileLifeTime);

@@ -17,7 +17,7 @@ MonoBehaviour:
   health: 15
   range: 15
   cost: 50
-  fireRate: 5
+  fireRate: 2
   projectileSpeed: 2
   projectileLifeTime: 100
   tracking: 1

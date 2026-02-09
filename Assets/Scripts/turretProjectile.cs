@@ -56,6 +56,11 @@ public class turretProjectile : MonoBehaviour
         if (!isTracking)
             return;
 
+        if(targetPoint == null)
+        {
+            Destroy(gameObject);
+        }
+
         // Move ourselves towards the target at every frame.
         Vector3 direction = targetPoint.position - currentPosition;
         currentPosition += direction.normalized * projectileSpeed * Time.deltaTime;

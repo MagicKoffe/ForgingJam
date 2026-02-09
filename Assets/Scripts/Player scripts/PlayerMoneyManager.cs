@@ -12,7 +12,7 @@ public class PlayerMoneyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        money = 50;
+        money = 200;
     }
 
     //Use positive ints to add, negative to take away
