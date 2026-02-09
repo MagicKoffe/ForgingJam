@@ -21,6 +21,11 @@ public class PlayerMoneyManager : MonoBehaviour
         money += _money;
     }
 
+    public int getMoney()
+    {
+        return money;
+    }
+
 
     // Update is called once per frame
     void Update()

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b62341c3a4aae4dbce66c9a537cb43, type: 3}
+  m_Name: cannonTurret
+  m_EditorClassIdentifier: 
+  buildingName: Cannon turret
+  damage: 5
+  health: 15
+  range: 15
+  cost: 50
+  fireRate: 5
+  projectileSpeed: 2
+  projectileLifeTime: 100
+  tracking: 1
+  icon: {fileID: 0}
+  buildingModel: {fileID: 2871945552301491883, guid: d26a7cd8b686ddb419bb82f04ac54811, type: 3}
+  projectile: {fileID: 108982178239363931, guid: ebc60d787620cd04d9d9b7287ea98e64, type: 3}

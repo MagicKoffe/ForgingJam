@@ -5,29 +5,30 @@ using UnityEngine;
 
 public class TurretTemplate : MonoBehaviour
 {
-    Transform currentTarget;
+    public Transform shootingPoint;
+    Vector3 aimDirection;
+    public Transform currentTarget;
     float closestDistance;
     GameObject[] allEnemies;
-    public float damage;
     public float maxHealth;
     float currentHealth;
     public float range;
 
-    public float fireRate;
-    public float projectileSpeed;
-    public float projectileLifeTime;
-    public bool tracking;
-    public GameObject projectile;
+    BuildScriptableObject turretStats;
 
-    private void Start()
+    public void passScriptableObject(BuildScriptableObject _stats)
     {
+        turretStats = _stats;
+        maxHealth = _stats.health;
+        range = _stats.range;
         currentHealth = maxHealth;
-        InvokeRepeating("shootTarget", fireRate, fireRate);
+        InvokeRepeating("shootTarget", turretStats.fireRate, turretStats.fireRate);
     }
 
     private void Update()
     {
         calculateTargets();
+        getAimDirection();
     }
 
     private void calculateTargets()
@@ -36,6 +37,9 @@ public class TurretTemplate : MonoBehaviour
 
         if (currentTarget == null)
         {
+            if (allEnemies[0] == null)
+                return;
+
             currentTarget = allEnemies[0].GetComponent<Transform>();
             closestDistance = Vector3.Distance(currentTarget.position, transform.position);
         }
@@ -55,11 +59,31 @@ public class TurretTemplate : MonoBehaviour
         
     }
 
+    private void getAimDirection()
+    {
+        aimDirection = (currentTarget.position - transform.position).normalized;
+    }
+
     public void shootTarget()
     {
         if(closestDistance <= range)
         {
-            //Shoot projectile
+            if (turretStats.tracking)
+            {
+                GameObject _projectile = Instantiate(turretStats.projectile, shootingPoint.position, Quaternion.identity);
+                _projectile.GetComponent<turretProjectile>().setStats(turretStats.damage, turretStats.projectileLifeTime);
+                _projectile.GetComponent<turretProjectile>().arcTowardsTarget(shootingPoint.position, currentTarget, turretStats.projectileSpeed);
+            }
+            else
+            {
+
+                GameObject _projectile = Instantiate(turretStats.projectile, transform.position, Quaternion.identity);
+
+                Rigidbody projectileRB = _projectile.GetComponent<Rigidbody>();
+                _projectile.GetComponent<turretProjectile>().setStats(turretStats.damage, turretStats.projectileLifeTime);
+
+                projectileRB.AddForce(turretStats.projectileSpeed * aimDirection * 10, ForceMode.Acceleration);
+            }
         }
     }
 }

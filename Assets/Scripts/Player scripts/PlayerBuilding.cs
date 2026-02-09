@@ -8,6 +8,7 @@ public class PlayerBuilding : MonoBehaviour
     Transform playerReticle;
     public bool buildMode;
     public GameObject buildUI;
+    PlayerMoneyManager playerMoney;
 
     public BuildScriptableObject[] buildingSO;
     public int currentBuilding = 0;
@@ -15,6 +16,7 @@ public class PlayerBuilding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerMoney = GetComponent<PlayerMoneyManager>();
         playerReticle = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Transform>();
         buildMode = false;
     }
@@ -52,7 +54,12 @@ public class PlayerBuilding : MonoBehaviour
     {
         BuildScriptableObject selecetdBuild = buildingSO[currentBuilding];
 
-        Instantiate(selecetdBuild.buildingModel, playerReticle.position, Quaternion.identity);
+        if(playerMoney.getMoney() >= selecetdBuild.cost)
+        {
+            playerMoney.changeMoney(-selecetdBuild.cost);
+            TurretTemplate newBuild = Instantiate(selecetdBuild.buildingModel, playerReticle.position, Quaternion.identity).GetComponent<TurretTemplate>();
+            newBuild.passScriptableObject(selecetdBuild);
+        }
 
     }
 
