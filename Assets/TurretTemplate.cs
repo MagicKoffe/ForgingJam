@@ -37,7 +37,7 @@ public class TurretTemplate : MonoBehaviour
 
         if (currentTarget == null)
         {
-            if (allEnemies[0] == null)
+            if (allEnemies.Length == 0)
                 return;
 
             currentTarget = allEnemies[0].GetComponent<Transform>();
@@ -61,6 +61,7 @@ public class TurretTemplate : MonoBehaviour
 
     private void getAimDirection()
     {
+        if(currentTarget != null)
         aimDirection = (currentTarget.position - transform.position).normalized;
     }
 

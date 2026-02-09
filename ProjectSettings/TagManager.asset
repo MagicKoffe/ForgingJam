@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Turret
   - IslandBase
+  - Port
+  - Game Manager
   layers:
   - Default
   - TransparentFX
