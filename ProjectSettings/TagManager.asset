@@ -11,6 +11,7 @@ TagManager:
   - IslandBase
   - Port
   - Game Manager
+  - Spawn
   layers:
   - Default
   - TransparentFX
