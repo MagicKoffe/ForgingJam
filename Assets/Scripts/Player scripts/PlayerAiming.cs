@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAiming : MonoBehaviour
 {
@@ -9,17 +10,38 @@ public class PlayerAiming : MonoBehaviour
 
     Transform worldReticle;
     Vector3 worldMousePosition;
+    PlayerBuilding playerBuidling;
+
+    SpriteRenderer reticleImage;
+    public Sprite normalReticel;
+    public Sprite buildReticle;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerBuidling = GetComponent<PlayerBuilding>();
         worldReticle = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Transform>();
+        reticleImage = worldReticle.GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        positionReticle();      
+        positionReticle();
+
+        checkBuildingMode();
+    }
+
+    private void checkBuildingMode()
+    {
+        if (playerBuidling.buildMode)
+        {
+            reticleImage.sprite = buildReticle;
+        }
+        else
+        {
+            reticleImage.sprite = normalReticel;
+        }
     }
 
     private void positionReticle()
