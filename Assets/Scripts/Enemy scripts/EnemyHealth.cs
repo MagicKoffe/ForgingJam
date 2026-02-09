@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth = 10;
     public float currentHealth;
 
+    public GameObject lootSpawn;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -26,9 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void enemyDie()
     {
-        //Play sinking animation
-        //Drop gold for player to collect
-
+        Instantiate(lootSpawn, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
